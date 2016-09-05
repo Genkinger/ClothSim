@@ -57,7 +57,7 @@ struct V_Stick {
 
 void updatePoints(V_Point* points[], long long size,float delta)
 {
-	float gravity = 1;
+	float gravity = 0.85;
 	float friction = 0.98;
 
 	for (long long i = 0; i < size; i++)
