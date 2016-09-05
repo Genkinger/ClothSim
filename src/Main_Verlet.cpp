@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <SFML\Graphics.hpp>
+#include <SFML/Graphics.hpp>
 #include <cmath>
 #include <memory>
 
@@ -265,6 +265,7 @@ int main()
 		window.pollEvent(ev);
 		if (ev.type == sf::Event::Closed)
 		{
+			
 			window.close();
 		}
 
@@ -311,6 +312,7 @@ int main()
 			delete[] sticks;
 			delete[] pts;
 
+		
 			pts = new V_Point*[rows * cols];
 			sticks = new V_Stick*[rows * cols * 2 - (rows + cols)];
 			
