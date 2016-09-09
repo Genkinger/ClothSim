@@ -11,6 +11,11 @@
 #define WIDTH 800
 #define HEIGHT 600
 
+void parseCFG(char* path)
+{
+		
+}
+
 float getLength(float x0, float y0, float x1, float y1) 
 {
 	float dx = x0 - x1;
@@ -57,7 +62,7 @@ struct V_Stick {
 
 void updatePoints(V_Point* points[], long long size,float delta)
 {
-	float gravity = 0.85;
+	float gravity = 0.7;
 	float friction = 0.98;
 
 	for (long long i = 0; i < size; i++)
@@ -209,7 +214,7 @@ void init(V_Point** pts, V_Stick** sticks, int rows, int cols)
 				V_Stick* stick = new V_Stick(point, pts[nP - 1]);
 				stick->dead = false;
 				stick->length = getLength(point->x, point->y, pts[nP - 1]->x, pts[nP - 1]->y);
-				stick->tear_length = stick->length + 40  + distrib(gen);
+				stick->tear_length = stick->length + 30  + distrib(gen);
 				sticks[i++] = stick;
 			}
 
@@ -218,7 +223,7 @@ void init(V_Point** pts, V_Stick** sticks, int rows, int cols)
 				V_Stick* stick = new V_Stick(point, pts[(row - 1) * cols + col]);
 				stick->dead = false;
 				stick->length = getLength(point->x, point->y, pts[(row - 1) * cols + col]->x, pts[(row - 1) * cols + col]->y);
-				stick->tear_length = stick->length + 40 + distrib(gen);
+				stick->tear_length = stick->length + 30 + distrib(gen);
 				sticks[i++] = stick;
 			}
 			if (row == 1)
@@ -226,7 +231,7 @@ void init(V_Point** pts, V_Stick** sticks, int rows, int cols)
 				V_Stick* stick = new V_Stick(point, pts[(row - 1) * cols + col]);
 				stick->dead = false;
 				stick->length = getLength(point->x, point->y, pts[(row - 1) * cols + col]->x, pts[(row - 1) * cols + col]->y);
-				stick->tear_length = stick->length + 100;
+				stick->tear_length = stick->length + 300;
 				sticks[i++] = stick;
 			}
 
@@ -281,15 +286,15 @@ int main()
 
 				if (inRange(dist,0,30) )
 				{
-					pts[i]->x -= 15;
-					pts[i]->y += 15;
+					pts[i]->x -= 20;
+					pts[i]->y += 20;
 					pts[i]->oldx = pts[i]->x;
 					pts[i]->oldy = pts[i]->y;
 				}
 				else if (inRange(dist, -30, 0))
 				{
-					pts[i]->x -= 15;
-					pts[i]->y += 15;
+					pts[i]->x -= 20;
+					pts[i]->y += 20;
 					pts[i]->oldx = pts[i]->x;
 					pts[i]->oldy = pts[i]->y;
 				}
